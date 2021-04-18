@@ -1,4 +1,7 @@
+import java.util.List;
+
 public interface UnloadingLoadingContainers {
-    public int loadingContainers();
-    public int unloadContainers();
+    public void loadingContainers();
+
+    public void unloadContainers();
 }
