@@ -1,18 +1,31 @@
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.util.List;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Ship {
+    public static final int MAX_SHIP_CONTAINER_VALUE = 20;
+    private int shipID;
+    private int shipContainers;
 
-    private int id;
-    private String name;
-    private List<Container> containers;
-    private static final int CONTAINER_VOLUME = 100;
+    public Ship() {
+        super();
+    }
+
+    public Ship(int shipID, int shipContainers) {
+        this.shipID = shipID;
+        this.shipContainers = shipContainers;
+    }
 
 
+    public int getShipID() {
+        return shipID;
+    }
+
+    public void setShipID(int shipID) {
+        this.shipID = shipID;
+    }
+
+    public int getShipContainers() {
+        return shipContainers;
+    }
+
+    public void setShipContainers(int shipContainers) {
+        this.shipContainers = shipContainers;
+    }
 }

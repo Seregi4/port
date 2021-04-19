@@ -1,19 +1,26 @@
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.util.ArrayList;
 
-import java.util.List;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class PortWarehouse {
+    public static final int MAX_CONTAINER_VALUE = 50;
+    private int warehouseContainer;
 
-    private List<Container>containers;
-
-    public static int getMaxVolume() {
-        return MAX_VOLUME;
+    public PortWarehouse() {
+        super();
     }
 
-    private static final int MAX_VOLUME = 1000;
+    public PortWarehouse(int warehouseContainer) {
+        this.warehouseContainer = warehouseContainer;
+    }
+
+    public static int getMaxContainerValue() {
+        return MAX_CONTAINER_VALUE;
+    }
+
+    public int getWarehouseContainer() {
+        return warehouseContainer;
+    }
+
+    public void setWarehouseContainer(int warehouseContainer) {
+        this.warehouseContainer = warehouseContainer;
+    }
 }
