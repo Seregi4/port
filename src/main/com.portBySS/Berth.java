@@ -1,8 +1,11 @@
 public class Berth {
     private boolean isEmpty;
+   private PortWarehouse warehouse;
+    public Berth(PortWarehouse warehouse) {
+        this.isEmpty = true;
+        this.warehouse=warehouse;
 
-    public Berth(boolean isEmpty) {
-        this.isEmpty = isEmpty;
+
     }
 
     public Berth() {
