@@ -46,8 +46,14 @@ public class Ship implements Runnable{
     public void run() {
         PortService service = new PortService();
 
-        if(port.getBerths().get(1).isEmpty()){
-            service.loadContainersToWarehouse(port.getWarehouse(), this,4);
+        if(port.getBerths().get(0).isEmpty()){
+            service.loadContainersToWarehouse(port.getBerths().get(1).getWarehouse(), this,4);
+            port.getBerths().get(0).setEmpty(false);
         }
+        else if(port.getBerths().get(1).isEmpty()){
+            service.loadContainersToWarehouse(port.getBerths().get(2).getWarehouse(), this,4);
+            port.getBerths().get(1).setEmpty(false);
+        }
+        else System.out.println("All warehouses no empty");
     }
 }

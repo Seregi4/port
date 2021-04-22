@@ -4,8 +4,10 @@ public class Berth {
     public Berth(PortWarehouse warehouse) {
         this.isEmpty = true;
         this.warehouse=warehouse;
+    }
 
-
+    public PortWarehouse getWarehouse() {
+        return warehouse;
     }
 
     public Berth() {

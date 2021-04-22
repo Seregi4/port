@@ -19,7 +19,7 @@ public class ApplicationRun {
         portBerth.add(berth2);
 
 
-        Port port = new Port(portBerth, warehouse);
+        Port port = new Port(portBerth);
 
         Ship ship1 = new Ship(1,5,port);
         Ship ship2 = new Ship(2,14,port);
@@ -27,23 +27,24 @@ public class ApplicationRun {
         Ship ship4 = new Ship(4,7,port);
         Ship ship5 = new Ship(5,20,port);
 
-        System.out.println(ship2.getShipContainers());
-        System.out.println(warehouse.getWarehouseContainer());
-
+       // System.out.println(ship2.getShipContainers());
+     //   System.out.println(warehouse.getWarehouseContainer());
      //   PortService portService = new PortService();
-
        // portService.loadContainersToWarehouse(warehouse,ship2,5);
-
-
-
       //  System.out.println("new");
-
       //  portService.unLoadContainersInWarehouse(warehouse,ship4,6);
-
        // portService.TransferringContainersFromShipToShip(ship3,ship1);
 
         Thread thread1 = new Thread(ship1);
+        Thread thread2 = new Thread(ship1);
+        Thread thread3 = new Thread(ship1);
+        Thread thread4 = new Thread(ship1);
+
+
         thread1.start();
+        thread2.start();
+//        thread3.start();
+//        thread4.start();
 
 
     }
