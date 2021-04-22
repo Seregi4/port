@@ -8,15 +8,13 @@ public class PortService {
 //    }
 
     public void loadContainersToWarehouse(PortWarehouse warehouse,Ship ship, int count) {
-        System.out.println("Warehouse current space " + warehouse.getWarehouseContainer());
-        System.out.println("ship id "+ ship.getShipID()+" use berth" );
-        if ((PortWarehouse.getMaxContainerValue() - warehouse.getWarehouseContainer() >= count)) {
+                    if ((PortWarehouse.getMaxContainerValue() - warehouse.getWarehouseContainer() >= count)) {
             warehouse.setWarehouseContainer(warehouse.getWarehouseContainer() + count);
             ship.setShipContainers(ship.getShipContainers() - count);
         } else {
             System.out.println("No free space");
         }
-        System.out.println("Warehouse current space " + warehouse.getWarehouseContainer());
+
 
 
     }

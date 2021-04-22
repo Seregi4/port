@@ -6,7 +6,7 @@ import java.util.concurrent.*;
 // Число контейнеров не может превышать емкость склада или корабля.
 //Executer;
 public class ApplicationRun {
-    public static void main(String[] args)  {
+    public static void main(String[] args) throws InterruptedException {
 
         PortWarehouse warehouse = new PortWarehouse(20);
 
@@ -36,15 +36,18 @@ public class ApplicationRun {
        // portService.TransferringContainersFromShipToShip(ship3,ship1);
 
         Thread thread1 = new Thread(ship1);
-        Thread thread2 = new Thread(ship1);
-        Thread thread3 = new Thread(ship1);
-        Thread thread4 = new Thread(ship1);
-
+        Thread thread2 = new Thread(ship2);
+        Thread thread3 = new Thread(ship3);
+        Thread thread4 = new Thread(ship4);
 
         thread1.start();
+
         thread2.start();
-//        thread3.start();
-//        thread4.start();
+
+        thread3.start();
+        thread3.join();
+        thread4.start();
+        thread4.join();
 
 
     }
