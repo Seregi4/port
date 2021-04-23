@@ -7,8 +7,8 @@ public class PortService {
 //        this.ship = ship;
 //    }
 
-    public void loadContainersToWarehouse(PortWarehouse warehouse,Ship ship, int count) {
-                    if ((PortWarehouse.getMaxContainerValue() - warehouse.getWarehouseContainer() >= count)) {
+    public void loadContainersToWarehouse(PortWarehouse warehouse, Ship ship, int count) {
+        if ((PortWarehouse.getMaxContainerValue() - warehouse.getWarehouseContainer() >= count)) {
             warehouse.setWarehouseContainer(warehouse.getWarehouseContainer() + count);
             ship.setShipContainers(ship.getShipContainers() - count);
         } else {
@@ -16,10 +16,9 @@ public class PortService {
         }
 
 
-
     }
 
-    public void unLoadContainersInWarehouse(PortWarehouse warehouse,Ship ship,int count) {
+    public void unLoadContainersInWarehouse(PortWarehouse warehouse, Ship ship, int count) {
         System.out.println("Warehouse current space " + warehouse.getWarehouseContainer());
 
         if (Ship.getMaxShipContainerValue() - ship.getShipContainers() >= count) {
@@ -31,7 +30,8 @@ public class PortService {
         System.out.println("Warehouse current space " + warehouse.getWarehouseContainer());
 
     }
-    public void TransferringContainersFromShipToShip(Ship ship1,Ship ship2) {
+
+    public void TransferringContainersFromShipToShip(Ship ship1, Ship ship2) {
         System.out.println("ship1 current space " + ship1.getShipContainers());
         System.out.println("ship2 current space " + ship2.getShipContainers());
 
