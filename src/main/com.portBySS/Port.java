@@ -11,7 +11,7 @@ public class Port {
 
     public Port() {
 
-        ExecutorService berths = Executors.newFixedThreadPool(3);    // Пулл потоков
+        ExecutorService berths = Executors.newFixedThreadPool(2);    // Пулл потоков
 
         for (int i = 0; i < 3; i++) {                                      //3 задания Dock
             berths.submit(new Berth());                                       //Старт 3 потоков

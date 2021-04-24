@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class PortWarehouse {
     public static final int MAX_CONTAINER_VALUE = 500;
-    private int warehouseContainer;
+    private static int warehouseContainer = 295;
 
     public PortWarehouse() {
         super();
