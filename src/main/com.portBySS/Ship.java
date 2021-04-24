@@ -1,25 +1,38 @@
-public class Ship implements Runnable {
-    public static final int MAX_SHIP_CONTAINER_VALUE = 20;
+public class Ship  {
+    static int idCount = 0;
+    public static final int MAX_SHIP_CONTAINER_VALUE = 30;
     private int shipID;
-    private int shipContainers;
     private Port port;
+
+    private int containersToLoad;
+    private int containersToUnLoad;
+    private int containersToUNLoadToShip;
+    private int shipContainersCount;
+
 
 //    public Ship() {
 //        super();
 //    }
 
-    public Ship(int shipID, int shipContainers, Port port) {
-        this.shipID = shipID;
-        this.shipContainers = shipContainers;
-        this.port = port;
+    public Ship() {
+
+        {
+            this.shipID = idCount;
+            idCount++;
+        }
+
+        this.containersToLoad = (int) (Math.random() * 10);
+        this.containersToUnLoad = (int) (Math.random() * 10);
+        this.containersToUNLoadToShip = (int) (Math.random()*10);
+        this.shipContainersCount=containersToUnLoad + containersToUNLoadToShip;
     }
 
-    public Port getPort() {
-        return port;
+    public static int getIdCount() {
+        return idCount;
     }
 
-    public void setPort(Port port) {
-        this.port = port;
+    public static void setIdCount(int idCount) {
+        Ship.idCount = idCount;
     }
 
     public static int getMaxShipContainerValue() {
@@ -34,46 +47,43 @@ public class Ship implements Runnable {
         this.shipID = shipID;
     }
 
-    public int getShipContainers() {
-        return shipContainers;
+    public Port getPort() {
+        return port;
     }
 
-    public void setShipContainers(int shipContainers) {
-        this.shipContainers = shipContainers;
+    public void setPort(Port port) {
+        this.port = port;
     }
 
-    @Override
-    public void run() {
-        PortService service = new PortService();
+    public int getContainersToLoad() {
+        return containersToLoad;
+    }
 
-        if (port.getBerths().get(0).isEmpty()) {
-            port.getBerths().get(0).setEmpty(false);
+    public void setContainersToLoad(int containersToLoad) {
+        this.containersToLoad = containersToLoad;
+    }
 
-            System.out.println("Ship " + shipID + "use berth 1");
-            System.out.println("warehouse = " + port.getBerths().get(0).getWarehouse().getWarehouseContainer());
-            System.out.println(" ship " + shipID + " have " + shipContainers + " containers");
+    public int getContainersToUnLoad() {
+        return containersToUnLoad;
+    }
 
-            service.loadContainersToWarehouse(port.getBerths().get(0).getWarehouse(), this, 4);
+    public void setContainersToUnLoad(int containersToUnLoad) {
+        this.containersToUnLoad = containersToUnLoad;
+    }
 
-            System.out.println(" ship " + shipID + " have " + shipContainers + " containers");
-            System.out.println("warehouse = " + port.getBerths().get(0).getWarehouse().getWarehouseContainer());
-            port.getBerths().get(0).setEmpty(true);
+    public int getContainersToUNLoadToShip() {
+        return containersToUNLoadToShip;
+    }
 
+    public void setContainersToUNLoadToShip(int containersToUNLoadToShip) {
+        this.containersToUNLoadToShip = containersToUNLoadToShip;
+    }
 
-        } else if (port.getBerths().get(1).isEmpty()) {
-            port.getBerths().get(1).setEmpty(false);
+    public int getShipContainersCount() {
+        return shipContainersCount;
+    }
 
-            System.out.println("Ship " + shipID + "use berth 2");
-            System.out.println("warehouse = " + port.getBerths().get(1).getWarehouse().getWarehouseContainer());
-            System.out.println(" ship " + shipID + " have " + shipContainers + " containers");
-
-            service.loadContainersToWarehouse(port.getBerths().get(1).getWarehouse(), this, 4);
-
-
-            System.out.println(" ship " + shipID + " have " + shipContainers + " containers");
-            System.out.println("warehouse = " + port.getBerths().get(1).getWarehouse().getWarehouseContainer());
-            port.getBerths().get(1).setEmpty(true);
-
-        } else System.out.println("All warehouses no empty");
+    public void setShipContainersCount(int shipContainersCount) {
+        this.shipContainersCount = shipContainersCount;
     }
 }

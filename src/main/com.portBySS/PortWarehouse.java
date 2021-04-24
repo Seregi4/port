@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class PortWarehouse {
-    public static final int MAX_CONTAINER_VALUE = 50;
+    public static final int MAX_CONTAINER_VALUE = 500;
     private int warehouseContainer;
 
     public PortWarehouse() {
