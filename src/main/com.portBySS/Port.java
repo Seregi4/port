@@ -1,12 +1,12 @@
-import java.util.ArrayList;
+
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Port {
-    private PortWarehouse warehouse;
-    static BlockingQueue<Ship> queue = new ArrayBlockingQueue<Ship>(10);    // Сюда поступают корабли
+
+    static BlockingQueue<Ship> queue = new ArrayBlockingQueue<>(10);    // Сюда поступают корабли
 
 
 

@@ -21,9 +21,10 @@ class MoveShips extends Thread {     //Поток движение
                 } else {
 
                     Port.queue.put(ship);       //Добавление корабля в очередь
-                    System.out.println("Ship" + ship.getShipID() + " прибыл в порт c " + ship.getShipContainersCount()+ " cargo");
-                   if(Port.queue.size()!=0){
-                    System.out.println("Ждут свободного дока " + Port.queue.size() + " кораблей");}
+                    System.out.println("Ship" + ship.getShipID() + " прибыл в порт ");
+                    if (Port.queue.size() != 0) {
+                        System.out.println("Ждут свободного дока " + Port.queue.size() + " кораблей");
+                    }
 
                     try {
                         sleep(900);

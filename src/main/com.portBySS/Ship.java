@@ -10,9 +10,7 @@ public class Ship  {
     private int shipContainersCount;
 
 
-//    public Ship() {
-//        super();
-//    }
+
 
     public Ship() {
 
