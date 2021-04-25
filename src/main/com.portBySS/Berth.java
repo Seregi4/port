@@ -7,8 +7,8 @@ public class Berth implements Runnable {
 
     @Override
     public void run() {
+        log.info(Thread.currentThread().getName() + " ready");
 
-        System.out.println(Thread.currentThread().getName() + " ready");
 
         try {
 
@@ -52,7 +52,7 @@ public class Berth implements Runnable {
         }
         log.info("на складе осталось" + warehouse.getWarehouseContainer() + " контейнеров");
         System.out.println("Корабль" + ship.getShipID() + " загружен ");
-        System.out.println();
+
     }
 
     private void shipUnloadToWarehoused() throws InterruptedException {
@@ -71,7 +71,7 @@ public class Berth implements Runnable {
         }
         log.info("на складе осталось " + warehouse.getWarehouseContainer() + " контейнеров");
         System.out.println("Корабль" + ship.getShipID() + " Разгружен ");
-        System.out.println();
+
     }
 
 }

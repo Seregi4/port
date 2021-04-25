@@ -1,19 +1,12 @@
-import java.util.ArrayList;
-
 //. Корабли заходят в порт для разгрузки или загрузки контейнеров и швартуются к причалам.
 // У каждого причала может стоять только один корабль.
 // Контейнеры перегружаются с корабля на корабль или на склад порта.
 // Число контейнеров не может превышать емкость склада или корабля.
-//Executer;
+
 public class ApplicationRun {
 
-    public static void main(String[] args) throws InterruptedException {
-
-        Port port = new Port();
-
-
-
-
+    public static void main(String[] args) {
+        new Port();
 
 //        for (int i = 0; i < 5; i++) {
 //            Ship ship = new Ship();
