@@ -1,12 +1,14 @@
-public class Berth implements Runnable {
+import org.apache.log4j.Logger;
 
+public class Berth implements Runnable {
+    private static final Logger log = Logger.getLogger(Berth.class);
     Ship ship = null;                   //Переменная хранящая корабль, она будет переписываться после каждого цикла
     PortWarehouse warehouse = new PortWarehouse();
 
     @Override
     public void run() {
 
-        System.out.println("Berths " + Thread.currentThread().getName() + " ready");
+        System.out.println(Thread.currentThread().getName() + " ready");
 
         try {
 
@@ -27,6 +29,7 @@ public class Berth implements Runnable {
                         Thread.sleep(3000);
                     }
                 }
+
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -36,10 +39,10 @@ public class Berth implements Runnable {
     private void shipLoadInWarehoused() throws InterruptedException {
         ship.setShipContainersCount(ship.getShipContainersCount() + ship.getContainersToLoad());
         warehouse.setWarehouseContainer(warehouse.getWarehouseContainer() - ship.getContainersToLoad());
-        System.out.println(Thread.currentThread().getName() + " Началась загрузка ship" + ship.getShipID() + " cargo " + ship.getContainersToLoad());
+        log.info(Thread.currentThread().getName() + " Началась загрузка ship" + ship.getShipID() + " cargo " + ship.getContainersToLoad());
+
         ship.setContainersToLoad(0);
 
-        System.out.println("на складе осталось" + warehouse.getWarehouseContainer() + " контейнеров");
         //соответственно разгрузка
         Thread.sleep(1000);
         try {
@@ -47,26 +50,28 @@ public class Berth implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        System.out.println("Корабль " + ship.getShipID() + " разгружен ");
+        log.info("на складе осталось" + warehouse.getWarehouseContainer() + " контейнеров");
+        System.out.println("Корабль" + ship.getShipID() + " загружен ");
+        System.out.println();
     }
 
     private void shipUnloadToWarehoused() throws InterruptedException {
         warehouse.setWarehouseContainer(warehouse.getWarehouseContainer() + ship.getContainersToUnLoad());
-        System.out.println(Thread.currentThread().getName() + " Началась разгруска на склад " + " Ship" + ship.getShipID() + " cargo " + ship.getContainersToUnLoad());
+        log.info(Thread.currentThread().getName() + " Началась разгруска на склад " + " Ship" + ship.getShipID() + " cargo " + ship.getContainersToUnLoad());
+        System.out.println();
         ship.setContainersToUnLoad(0);
         //Ожидание 1 сек
 
 
-        System.out.println("на складе осталось" + warehouse.getWarehouseContainer() + " контейнеров"); //Добавление контейнеров на склад с корабля
         Thread.sleep(1000);
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        System.out.println("Корабль " + ship.getShipID() + " Разгружен ");
+        log.info("на складе осталось " + warehouse.getWarehouseContainer() + " контейнеров");
+        System.out.println("Корабль" + ship.getShipID() + " Разгружен ");
+        System.out.println();
     }
 
 }
