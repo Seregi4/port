@@ -7,9 +7,15 @@ import java.util.concurrent.Executors;
 public class Port {
 
     static BlockingQueue<Ship> queue = new ArrayBlockingQueue<>(10);    // Сюда поступают корабли
+    PortWarehouse warehouse = new PortWarehouse();
 
+    public PortWarehouse getWarehouse() {
+        return warehouse;
+    }
 
-
+    public void setWarehouse(PortWarehouse warehouse) {
+        this.warehouse = warehouse;
+    }
 
     public Port() {
 
