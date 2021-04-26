@@ -16,15 +16,16 @@ public class Berth implements Runnable {
                 ship = Port.queue.take();             //Присваивание переменной ship элемента из очереди кораблей
                 if (ship.getContainersToUnLoad() != 0) {    //Условие груза связанное с грузом коробля для разгрузки
                     if ((warehouse.getWarehouseContainer() + ship.getContainersToUnLoad()) < PortWarehouse.MAX_CONTAINER_VALUE) {
-                        shipUnloadToWarehoused(ship,warehouse);
+                        shipUnloadToWarehoused(ship, warehouse);
                     } else {
+                        System.out.println(" Склад переполнен");
                         Thread.sleep(3000);
                     }
 
                 }
                 if (ship.getContainersToLoad() != 0) {     //Условие груза связанное с грузом коробля для загрузки
                     if (ship.getShipContainersCount() + ship.getContainersToLoad() < Ship.MAX_SHIP_CONTAINER_VALUE) {
-                        shipLoadInWarehoused(ship,warehouse);
+                        shipLoadInWarehoused(ship, warehouse);
                     } else {
                         Thread.sleep(3000);
                     }
@@ -36,7 +37,7 @@ public class Berth implements Runnable {
         }
     }
 
-    private void shipLoadInWarehoused(Ship ship,PortWarehouse warehouse) throws InterruptedException {
+    public void shipLoadInWarehoused(Ship ship, PortWarehouse warehouse) throws InterruptedException {
         ship.setShipContainersCount(ship.getShipContainersCount() + ship.getContainersToLoad());
         warehouse.setWarehouseContainer(warehouse.getWarehouseContainer() - ship.getContainersToLoad());
         log.info(Thread.currentThread().getName() + " Началась загрузка ship" + ship.getShipID() + " cargo " + ship.getContainersToLoad());
@@ -55,7 +56,7 @@ public class Berth implements Runnable {
 
     }
 
-    private void shipUnloadToWarehoused(Ship ship,PortWarehouse warehouse) throws InterruptedException {
+    public void shipUnloadToWarehoused(Ship ship, PortWarehouse warehouse) throws InterruptedException {
         warehouse.setWarehouseContainer(warehouse.getWarehouseContainer() + ship.getContainersToUnLoad());
         log.info(Thread.currentThread().getName() + " Началась разгруска на склад " + " Ship" + ship.getShipID() + " cargo " + ship.getContainersToUnLoad());
         System.out.println();
